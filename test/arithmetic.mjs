@@ -13,6 +13,7 @@ describe("arithmetic", () => {
       [["+", 1, -2, ["*", 3, 4], ["^", 5, 6]], "1+-2+3*4+5^6"],
       [["*", 1, ["+", 2, 3]], "1*(2+3)"],
       [["^", ["+", 1, 2], ["*", 3, 4]], "(1+2)^(3*4)"],
+      [["^", 3, ["^", 2, -1]], "3^2^-1"],
     ]) {
       it(`should stringify ${JSON.stringify(input)} to "${expected}"`, () => {
         assert.strictEqual(stringify(input), expected);
