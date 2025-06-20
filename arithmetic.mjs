@@ -8,7 +8,7 @@ function stringify(expr, level=0) {
   if(typeof expr === "number" || typeof expr === "bigint") {
     return expr.toString();
   }
-  if(Array.isArray(expr) && expr.length >= 2 && expr[0] === "+") {
+  if(Array.isArray(expr) && expr.length >= 3 && expr[0] === "+") {
     let string = stringify(expr[1], 1); 
     for(let i = 2; i < expr.length; i++) {
       string += "+" + stringify(expr[i], 1);
@@ -18,7 +18,7 @@ function stringify(expr, level=0) {
     }
     return string;
   }
-  if(Array.isArray(expr) && expr.length >= 2 && expr[0] === "*") {
+  if(Array.isArray(expr) && expr.length >= 3 && expr[0] === "*") {
     let string = stringify(expr[1], 2);
     for(let i = 2; i < expr.length; i++) {
       string += "*" + stringify(expr[i], 2);
@@ -28,7 +28,7 @@ function stringify(expr, level=0) {
     }
     return string;
   }
-  if(Array.isArray(expr) && expr.length === 2 && expr[0] === "^") {
+  if(Array.isArray(expr) && expr.length === 3 && expr[0] === "^") {
     let string = stringify(expr[1], 3) + "^" + stringify(expr[2], 3);
     if(level >= 3) {
       string = "(" + string + ")";
