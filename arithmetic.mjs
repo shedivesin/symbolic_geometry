@@ -21,7 +21,7 @@ function stringify(expr, level=0) {
   if(Array.isArray(expr) && expr.length >= 2 && expr[0] === "*") {
     let string = stringify(expr[1], 2);
     for(let i = 2; i < expr.length; i++) {
-      string += "+" + stringify(expr[i], 2);
+      string += "*" + stringify(expr[i], 2);
     }
     if(level >= 2) {
       string = "(" + string + ")";
