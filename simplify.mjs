@@ -62,6 +62,9 @@ function simplify(x) {
         d[0] += t;
       }
 
+      // anything multiplied by zero is zero
+      if(d[0] === 0) { return 0; }
+
       // remove pointless numbers
       if(d.length >= 2 && d[0] === 1) { d.shift(); }
 
@@ -83,4 +86,4 @@ function simplify(x) {
   return d;
 }
 
-console.log(simplify(["+", ["^", 3, 2, -1], ["*", 3, 4], 5, 6]));
+console.log(simplify(["+", ["^", 3, 2, -1], ["*", ["^", 5, -1], 0], ["*", 3, 4], 5, 6]));
